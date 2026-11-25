@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Avix Temp Mail — sistem email sementara personal dan open-source untuk menerima email verifikasi akun di avixmail.is-a.dev.">
+  <title>Avix Temp Mail — Email Sementara Personal</title>
+  <style>
+    :root { --bg: #0f172a; --card: #1e293b; --accent: #38bdf8; --text: #e2e8f0; --muted: #94a3b8; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    header { text-align: center; padding: 4rem 1.5rem 2rem; }
+    header h1 { font-size: 2.5rem; }
+    header h1 span { color: var(--accent); }
+    header p { color: var(--muted); max-width: 640px; margin: 1rem auto 0; }
+    .badge { display: inline-block; background: #f59e0b; color: #111827; font-weight: 700; font-size: 0.85rem; padding: 0.25rem 0.75rem; border-radius: 999px; margin-bottom: 1rem; }
+    main { max-width: 860px; margin: 0 auto; padding: 1rem 1.5rem 4rem; }
+    section { background: var(--card); border-radius: 12px; padding: 1.75rem; margin-bottom: 1.5rem; }
+    h2 { margin-bottom: 0.75rem; color: var(--accent); }
+    ul { padding-left: 1.25rem; }
+    li { margin-bottom: 0.5rem; }
+    code { background: #0f172a; padding: 0.15rem 0.4rem; border-radius: 6px; font-size: 0.95em; }
+    pre { background: #0f172a; padding: 1rem; border-radius: 8px; overflow-x: auto; margin-top: 0.75rem; }
+    .steps { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 1rem; }
+    .step { background: #0f172a; border-radius: 8px; padding: 1rem; }
+    .step strong { display: block; margin-bottom: 0.25rem; color: var(--accent); }
+    footer { text-align: center; color: var(--muted); padding: 2rem 1rem; font-size: 0.9rem; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="badge">🚧 Dalam pengembangan</span>
+    <h1>Avix <span>Temp Mail</span></h1>
+    <p>Sistem email sementara personal dan open-source untuk menerima email verifikasi akun — tanpa harus memakai alamat email utama Anda.</p>
+  </header>
+  <main>
+    <section>
+      <h2>Apa itu Avix Temp Mail?</h2>
+      <p>Avix Temp Mail adalah proyek perangkat lunak personal milik <strong>yahub187</strong>. Sistem ini menyediakan alamat email sementara di domain <code>avixmail.is-a.dev</code> yang dipakai khusus untuk menerima email verifikasi — seperti kode OTP dan tautan konfirmasi pendaftaran — dari berbagai layanan daring.</p>
+    </section>
+    <section>
+      <h2>Bagaimana cara kerjanya?</h2>
+      <ul>
+        <li><strong>Postfix</strong> — menerima email masuk (SMTP) untuk domain <code>avixmail.is-a.dev</code>.</li>
+        <li><strong>Dovecot</strong> — menyimpan dan melayani kotak masuk (IMAP) untuk setiap mailbox sementara.</li>
+        <li><strong>FastAPI</strong> — API dan antarmuka web untuk membuat mailbox, melihat pesan masuk, dan mengelola kartu mailbox.</li>
+        <li><strong>ImprovMX</strong> — menangani penerimaan email (MX/TXT) pada domain <code>avixmail.is-a.dev</code>.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Kartu mailbox</h2>
+      <p>Setiap mailbox dibuat secara acak dan direpresentasikan sebagai kartu dengan format:</p>
+      <pre>email|password|other|link</pre>
+      <ul>
+        <li><strong>email</strong> — alamat email sementara, contoh: <code>namaacak@avixmail.is-a.dev</code></li>
+        <li><strong>password</strong> — kata sandi untuk mengakses mailbox</li>
+        <li><strong>other</strong> — catatan tambahan, misalnya layanan tempat email dipakai</li>
+        <li><strong>link</strong> — tautan untuk membuka kotak masuk mailbox tersebut</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Cara menggunakan</h2>
+      <div class="steps">
+        <div class="step"><strong>1. Buat mailbox</strong>Sistem menghasilkan alamat acak di <code>avixmail.is-a.dev</code> beserta kata sandinya.</div>
+        <div class="step"><strong>2. Gunakan alamatnya</strong>Pakai alamat tersebut saat mendaftar atau meminta verifikasi pada suatu layanan.</div>
+        <div class="step"><strong>3. Baca emailnya</strong>Buka kotak masuk lewat tautan pada kartu mailbox dan baca email verifikasi yang masuk.</div>
+      </div>
+      <p style="margin-top: 1rem;">Mailbox bersifat sementara: jangan gunakan untuk hal penting atau jangka panjang.</p>
+    </section>
+    <section>
+      <h2>Status proyek</h2>
+      <p>Proyek ini masih <strong>dalam pengembangan</strong>. Arsitektur dan antarmuka masih dikerjakan, dan email masuk saat ini diterima melalui ImprovMX pada domain <code>avixmail.is-a.dev</code>.</p>
+      <p style="margin-top: 0.75rem;">Kode sumber: <a href="https://github.com/yahub187/temp-mail">github.com/yahub187/temp-mail</a></p>
+    </section>
+  </main>
+  <footer>
+    Avix Temp Mail — proyek perangkat lunak personal dan non-komersial oleh yahub187.<br>
+    Domain email <code>avixmail.is-a.dev</code> digunakan untuk penerimaan email, bukan sebagai situs web.
+  </footer>
+</body>
+</html>
